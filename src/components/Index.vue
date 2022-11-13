@@ -1,19 +1,19 @@
 <template>
   <div class="outbox">
     <div>
-      <el-row>
+      <!-- <el-row>
         <el-col :span="18" :offset="3">
           <div class="grid-content bg-purple">
                 <el-tabs v-model="activeName" type= "border-card">
-                  <el-tab-pane label="介绍" name="first">这里是介绍</el-tab-pane>
-                  <el-tab-pane label="FAQ" name="second">这是FAQ   MIMI怎么办？</el-tab-pane>
-                  <el-tab-pane label="建议箱" name="third">这里是建议箱，用来发送遇到的问题和建议</el-tab-pane>
+                  <el-tab-pane label="介绍" name="first">内部使用，不开放对应页面</el-tab-pane>
+                  <el-tab-pane label="FAQ" name="second">内部使用，不开放对应页面</el-tab-pane>
+                  <el-tab-pane label="建议箱" name="third">内部使用，不开放对应页面</el-tab-pane>
                 </el-tabs>
           </div>
         </el-col>
-      </el-row>
+      </el-row> -->
     </div>
-    <div style="margin:15px 0">还有{{unlabled}}张图片就完成标注了！！</div> 
+    <div style="margin:15px 0">还有<span style="color:blue">{{unlabled}}</span>张图片就完成标注了！！</div> 
     <div :class="outerClass">
           <pic-block v-for="(item,i) in piclist" :key="i" :thumbnail="BASEURL+item['thumbnail']" :original="BASEURL+item['original']" :id="item['id']"/>
     </div>
@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       number:10,
-      BASEURL:"http://localhost:5000/",
+      BASEURL:this.$baseurl,
       piclist:[
       ],
       activeName: 'first',
@@ -46,7 +46,8 @@ export default {
     if(width<=626) this.outerClass="outer-1",this.number = 5
     else if(width<=990) this.outerClass="outer-2",this.number = 6
     else if(width<=1316) this.outerClass="outer-3",this.number = 9
-    else this.outerClass="outer-4",this.number = 12
+    else if(width<=1630) this.outerClass="outer-4",this.number = 12
+    else this.outerClass="outer-5",this.number = 15
   },
   mounted: function () {
     this.$http.post('getpic', {number:this.number}).then((res) => {
@@ -57,11 +58,12 @@ export default {
     })
     window.onresize =() =>{
         let width = document.documentElement.clientWidth;
-        //console.log(width)
+        console.log(width)
         if(width<=626) this.outerClass="outer-1"
         else if(width<=990) this.outerClass="outer-2"
         else if(width<=1316) this.outerClass="outer-3"
-        else this.outerClass="outer-4"
+        else if(width<=1630) this.outerClass="outer-4"
+        else this.outerClass="outer-5"
     };
   }
 

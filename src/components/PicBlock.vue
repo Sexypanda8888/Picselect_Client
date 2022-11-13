@@ -73,21 +73,28 @@ export default {
         is_virtual:0,
         is_real:0,
         is_other:0,
-        is_undecided:0,
+        is_3D:0,
+        is_text:0,
         danger_level:-1,
         is_labled:0  
       },
       //undecided包括两个作用：1.查看是否被打过标签 2.查看是否归于比较难选的类型
       choices:[
         {
-          "name":"二次元",
+          "name":"虚拟",
           "property":"is_virtual",
           "is_ero":1,
           "css":"primary"
         },
         {
-          "name":"真人",
+          "name":"现实",
           "property":"is_real",
+          "is_ero":1,
+          "css":"primary"
+        },
+        {
+          "name":"文本",
+          "property":"is_text",
           "is_ero":1,
           "css":"primary"
         },
@@ -95,14 +102,9 @@ export default {
           "name":"其他",
           "property":"is_other",
           "is_ero":0,
-          "css":"primary"
-        },
-        {
-          "name":"不确定",
-          "property":"is_undecided",
-          "is_ero":0,
-          "css":"warning"
+          "css":"danger"
         }
+
       ]
     };
   },
@@ -138,7 +140,7 @@ export default {
         
     },
     sendJudgement(level){
-      alert("确定把该图片设为"+level+"吗")
+      // alert("确定把该图片设为"+level+"吗")
       //把pic_name输过去就可以让后端Java根据名字查找了。
       this.dialogVisible = false
       this.disable = true
