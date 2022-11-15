@@ -7,7 +7,11 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios'
 Vue.config.productionTip = false
-axios.defaults.baseURL = "http://localhost:5000"
+Vue.prototype.$devhttp = "http://localhost:5000/";
+Vue.prototype.$prodhttp = "http://124.221.31.26:5000/";
+// 修改这里来改变prod环境
+Vue.prototype.$baseurl = Vue.prototype.$prodhttp
+axios.defaults.baseURL = Vue.prototype.$baseurl
 Vue.prototype.$http = axios;
 Vue.use(ElementUI);
 
