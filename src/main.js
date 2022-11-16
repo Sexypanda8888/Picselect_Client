@@ -10,11 +10,11 @@ Vue.config.productionTip = false
 Vue.prototype.$devhttp = "http://localhost:5000/";
 Vue.prototype.$prodhttp = "http://124.221.31.26:5000/";
 // 修改这里来改变prod环境
-Vue.prototype.$baseurl = Vue.prototype.$prodhttp
+Vue.prototype.$baseurl = Vue.prototype.$devhttp
 axios.defaults.baseURL = Vue.prototype.$baseurl
 Vue.prototype.$http = axios;
 Vue.use(ElementUI);
-
+axios.defaults.withCredentials = true
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

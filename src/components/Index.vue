@@ -42,6 +42,12 @@ export default {
   methods:{
   },
   created:function(){
+    //要在这里先设置cookie? 如果没有cookie,就重定向到check里面
+    this.$http.get('checkcookie').then((res)=>{
+      if (res.status == 200) console.log("密码正确")
+    }).catch((error)=>{
+      this.$router.push("check")
+    })
     let width = document.documentElement.clientWidth;
     if(width<=626) this.outerClass="outer-1",this.number = 10
     else if(width<=990) this.outerClass="outer-2",this.number = 12
@@ -50,6 +56,9 @@ export default {
     else this.outerClass="outer-5",this.number = 15
   },
   mounted: function () {
+
+
+
     this.$http.post('getpic', {number:this.number}).then((res) => {
       this.piclist=res.data
     })
@@ -58,7 +67,7 @@ export default {
     })
     window.onresize =() =>{
         let width = document.documentElement.clientWidth;
-        console.log(width)
+        // console.log(width)
         if(width<=626) this.outerClass="outer-1"
         else if(width<=990) this.outerClass="outer-2"
         else if(width<=1316) this.outerClass="outer-3"

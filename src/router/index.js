@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Index from '@/components/Index'
 import PicBlock from '@/components/PicBlock'
+import CheckPassword from '@/components/CheckPassword'
 Vue.use(Router)
 
 export default new Router({
@@ -16,6 +17,11 @@ export default new Router({
             path: '/test',
             name: 'BlockTest',
             component: PicBlock
+        },
+        {
+            path: '/check',
+            name: 'CheckPassword',
+            component: CheckPassword
         }
     ]
 })
