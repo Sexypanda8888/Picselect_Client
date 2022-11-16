@@ -43,9 +43,9 @@ export default {
   },
   created:function(){
     let width = document.documentElement.clientWidth;
-    if(width<=626) this.outerClass="outer-1",this.number = 5
-    else if(width<=990) this.outerClass="outer-2",this.number = 6
-    else if(width<=1316) this.outerClass="outer-3",this.number = 9
+    if(width<=626) this.outerClass="outer-1",this.number = 10
+    else if(width<=990) this.outerClass="outer-2",this.number = 12
+    else if(width<=1316) this.outerClass="outer-3",this.number = 12
     else if(width<=1630) this.outerClass="outer-4",this.number = 12
     else this.outerClass="outer-5",this.number = 15
   },

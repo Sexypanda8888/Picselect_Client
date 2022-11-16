@@ -23,23 +23,22 @@
       </div>
     </el-card>
     <el-dialog
-      title="选择"
+      :title= selectTitle
       :visible.sync="dialogVisible"
       width="45%"
-      :before-close="handleClose"
     >
       <span>图片"{{ pic_name }}"的安全性如何？</span>
       <div style="padding-top: 30px">
-        <el-button type="success" @click="sendJudgement(0)">
+        <el-button type="success" @click="sendJudgement(0)" style="margin:5px">
           非常安全
         </el-button>
-        <el-button type="primary" @click="sendJudgement(1)"> 
+        <el-button type="primary" @click="sendJudgement(1)" style="margin:5px"> 
           比较安全
         </el-button>
-        <el-button type="warning" @click="sendJudgement(2)"> 
+        <el-button type="warning" @click="sendJudgement(2)" style="margin:5px"> 
           不太安全
         </el-button>
-        <el-button type="danger" @click="sendJudgement(3)"> 
+        <el-button type="danger" @click="sendJudgement(3)" style="margin:5px"> 
           很不安全
         </el-button>
       </div>
@@ -73,11 +72,12 @@ export default {
         is_virtual:0,
         is_real:0,
         is_other:0,
-        is_3D:0,
         is_text:0,
         danger_level:-1,
         is_labled:0  
       },
+
+      selectTitle:"",
       //undecided包括两个作用：1.查看是否被打过标签 2.查看是否归于比较难选的类型
       choices:[
         {
@@ -109,17 +109,17 @@ export default {
     };
   },
   methods: {
-    handleClose(done) {
-      this.$confirm("确认关闭？")
-        .then((_) => {
-          done();
-        })
-        .catch((_) => {});
-    },
+    // handleClose(done) {
+    //   this.$confirm("确认关闭？")
+    //     .then((_) => {
+    //       done();
+    //     })
+    //     .catch((_) => {});
+    // },
     setProperty(item){
       this.pic_data[item.property] = 1
       this.pic_data.is_labled = 1
-
+      this.selectTitle = "你选择了" + '"' +item.name + '"'
       if(item.is_ero == 1){
         this.dialogVisible = true
       }
