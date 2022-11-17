@@ -20,8 +20,20 @@
       };
     },
     methods: {
+        writeCookie(name, value, hours)
+          {
+            var expire = "";
+            if(hours != null)
+            {
+              expire = new Date((new Date()).getTime() + hours * 3600000);
+              expire = "; expires=" + expire.toGMTString();
+            }
+            document.cookie = name + "=" + escape(value) + expire;
+          },
+        
         setCookie(){
-            document.cookie = "password=" + this.password
+            this.writeCookie("password",this.password,100000)
+            this.writeCookie("test","123456",100000)
             this.$router.push("/")
         }
     }
