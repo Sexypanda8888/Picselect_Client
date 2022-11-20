@@ -13,15 +13,13 @@
         </el-col>
       </el-row> -->
     </div>
-
       <div style="margin:15px 0"> 
       <span v-if = username  >你好,{{username}} ！</span>
       <span v-else @click="dialogVisible = true,this.useralert = false" > <el-link  type="primary">点此登录账号</el-link></span>
       还有<span style="color:blue">{{unlabled}}</span>张图片就完成标注了！！
     </div> 
-
-        <div :class="outerClass">
-          <pic-block v-for="(item,i) in piclist" :key="i" :thumbnail="BASEURL+item['thumbnail']" :original="BASEURL+item['original']" :id="item['id']"/>
+      <div :class="outerClass">
+        <pic-block v-for="(item,i) in piclist" :key="i" :thumbnail="BASEURL+item['thumbnail']" :original="BASEURL+item['original']" :id="item['id']"/>
       </div>
     <el-dialog
       title= "填写名字"
@@ -38,15 +36,15 @@
           </el-col>
       </el-row>
 
-    <el-row >
+      <el-row >
+            <el-col :span="20" :offset="2">
+            <span style="float:left">输入你的账号，你的打分行为将会被记录。</span> 
+          </el-col>
+          
           <el-col :span="20" :offset="2">
-          <span style="float:left">输入你的账号，你的打分行为将会被记录。</span> 
-        </el-col>
-        
-        <el-col :span="20" :offset="2">
-          <el-input  v-model="usernameSet" placeholder="请输入账号" style="margin-top: 20px"></el-input>
-        </el-col>
-    </el-row>
+            <el-input  v-model="usernameSet" placeholder="请输入账号" style="margin-top: 20px"></el-input>
+          </el-col>
+      </el-row>
       <el-row>
         <el-col :span="3" :offset="20">
             <el-button type="primary" style="margin-top:20px;float:right " @click="writeName(usernameSet)">确认</el-button>
@@ -112,7 +110,7 @@ export default {
     // }).catch((error)=>{
     //   this.$router.push("check")
     // })
-    //TODO: username这部分还没有完全做好，比如说退出登录，检查是否有对应名字什么的，可能要用到el的右上角弹窗。下面的代码也没测试
+    //TODO: 退出登录 
     // console.log(document.cookie)
     let cookieObj = cookieToJson(document.cookie)
     // console.log("-----------------------------------------------")
