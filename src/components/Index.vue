@@ -19,7 +19,7 @@
       还有<span style="color:blue">{{unlabled}}</span>张图片就完成标注了！！
     </div> 
       <div :class="outerClass">
-        <pic-block v-for="(item,i) in piclist" :key="i" :thumbnail="BASEURL+item['thumbnail']" :original="BASEURL+item['original']" :id="item['id']"/>
+        <pic-block v-for="(item,i) in piclist" :key="i" :thumbnail="$thumbhttp+item['thumbnail']" :original="$srchttp+item['original']" :id="item['id']"/>
       </div>
     <el-dialog
       title= "填写名字"
@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       number:10,
-      BASEURL:this.$baseurl,
+      BASEURL:this.$srchttp,
       piclist:[
       ],
       activeName: 'first',
@@ -85,8 +85,8 @@ export default {
       //如果检查不到，就要弹出动画系TODO
       // this.$http.post('')
       this.$http.post('checkusername',{"username":this.usernameSet}).then((res) => {
-        console.log("-----------------------------------------------")
-        console.log(res.data)
+        // console.log("-----------------------------------------------")
+        // console.log(res.data)
         if (res.data == 1) {
           writeCookie("username",this.usernameSet,10000000)
           this.username = this.usernameSet
@@ -105,11 +105,11 @@ export default {
   },
   created:function(){
     //要在这里先设置cookie? 如果没有cookie,就重定向到check里面
-    // this.$http.get('checkcookie').then((res)=>{
-    //   if (res.status == 200) console.log("密码正确")
-    // }).catch((error)=>{
-    //   this.$router.push("check")
-    // })
+    this.$http.get('checkcookie').then((res)=>{
+      if (res.status == 200) console.log("密码正确")
+    }).catch((error)=>{
+      this.$router.push("check")
+    })
     //TODO: 退出登录 
     // console.log(document.cookie)
     let cookieObj = cookieToJson(document.cookie)
