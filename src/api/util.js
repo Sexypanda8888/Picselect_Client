@@ -1,6 +1,6 @@
 export const cookieToJson = str => {
-  // console.log(str)
-  // str = str.replace(/ */g, "");
+  console.log(str)
+  str = str.replace(/ */g, "");
   console.log(str)
   let cookieArr = str.split(";");
   let obj = {} 

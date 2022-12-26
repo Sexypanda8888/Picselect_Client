@@ -10,10 +10,10 @@ Vue.config.productionTip = false
 Vue.prototype.$devhttp = "http://localhost:5000/";
 Vue.prototype.$prodhttp = "http://124.221.31.26:5000/";
 Vue.prototype.$srchttp1 = "http://103.229.126.165:3000/"
-Vue.prototype.$srchttp2 = "http://124.221.31.26:5000/"
+Vue.prototype.$srchttp2 = "http://124.221.31.26:5000/static/img/"
 Vue.prototype.$srchttp3 = "http://localhost:5000/"
-Vue.prototype.$thumbhttp = Vue.prototype.$srchttp3
-Vue.prototype.$srchttp = Vue.prototype.$srchttp1
+Vue.prototype.$thumbhttp = Vue.prototype.$prodhttp
+Vue.prototype.$srchttp = Vue.prototype.$srchttp2
 // 修改这里来改变prod环境
 Vue.prototype.$baseurl = Vue.prototype.$devhttp
 axios.defaults.baseURL = Vue.prototype.$baseurl

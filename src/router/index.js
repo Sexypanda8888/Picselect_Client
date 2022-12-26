@@ -6,6 +6,7 @@ import PicBlock from '@/components/PicBlock'
 import CheckPassword from '@/components/CheckPassword'
 import FindbyID from '@/components/FindByID'
 import ShowList from '@/components/ShowList'
+import Predict from '@/components/Predict'
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +35,11 @@ export default new Router({
             path: '/showlist',
             name: 'ShowList',
             component: ShowList
+        },
+        {
+            path: '/predict',
+            name: 'Predict',
+            component: Predict
         }
     ]
 })

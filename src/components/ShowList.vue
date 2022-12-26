@@ -14,6 +14,7 @@
       type="date"
       placeholder="选择日期"
       @change="getPicData"
+      value-format="yyyy-MM-dd"
       >
     </el-date-picker>
     <div :class="outerClass">
@@ -122,6 +123,7 @@ export default {
     getPicData(){
         this.$http.post("getpicbytime", { date: this.date }).then((res) => {
         this.piclist = res.data;
+        this.record = res.data.length;
     });
     }
   },
